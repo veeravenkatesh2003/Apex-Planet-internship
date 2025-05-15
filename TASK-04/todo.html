@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do & Notes - WebMastery Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Productivity Dashboard</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="todo.html" class="active">To-Do</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="tabs">
+        <button onclick="switchTab('todo')">To-Do</button>
+        <button onclick="switchTab('notes')">Notes</button>
+      </div>
+
+      <div id="todoTab" class="tab active">
+        <h2>To-Do List</h2>
+        <input type="text" id="todoInput" placeholder="Add a new task" />
+        <button onclick="addTask()">Add Task</button>
+        <ul id="todoList"></ul>
+      </div>
+
+      <div id="notesTab" class="tab">
+        <h2>Notes</h2>
+        <textarea id="noteInput" rows="4" placeholder="Write a new note..."></textarea>
+        <button onclick="addNote()">Save Note</button>
+        <ul id="noteList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WebMastery Hub</p>
+  </footer>
+
+  <script src="java.js"></script>
+</body>
+</html>
