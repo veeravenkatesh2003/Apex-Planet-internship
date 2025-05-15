@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  header {
+    background: #0b7285;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav a {
+    color: white;
+    margin-left: 1rem;
+    text-decoration: none;
+  }
+  
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  form input, form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form button {
+    background: #0b7285;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .todo-input {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .todo-input input {
+    flex: 1;
+  }
+  
+  .todo-input button {
+    background: #5c940d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  ul#taskList {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  
+  ul#taskList li {
+    background: #e9f5e9;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    border-left: 5px solid #5c940d;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ul#taskList li button {
+    background: #c92a2a;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #dee2e6;
+    margin-top: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    main {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
