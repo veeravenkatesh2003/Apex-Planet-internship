@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebGenius: Interactive Learning Hub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+    }
+    header, footer {
+      background: #004d99;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero button {
+      padding: 0.75rem 1.5rem;
+      margin: 1rem;
+      border: none;
+      background-color: #0073e6;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 0.5rem;
+    }
+    section {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WebGenius Interactive Hub</h1>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Welcome to the Interactive Learning Hub</h1>
+      <p>Choose an experience below:</p>
+      <button onclick="showSection('quiz')">Take a Quiz</button>
+      <button onclick="showSection('carousel')">View Carousel</button>
+      <button onclick="showSection('api')">Get a Joke</button>
+    </div>
+    <section id="quiz">
+      <h2>Quick Web Quiz</h2>
+      <p>1. What does CSS stand for?</p>
+      <button onclick="alert('Correct!')">Cascading Style Sheets</button>
+      <button onclick="alert('Try again.')">Creative Style Scripts</button>
+
+      <p>2. Which HTML tag is used for inserting a line break?</p>
+      <button onclick="alert('Correct!')">&lt;br&gt;</button>
+      <button onclick="alert('Try again.')">&lt;break&gt;</button>
+
+      <p>3. What is the correct syntax for referring to an external script called "script.js"?</p>
+      <button onclick="alert('Correct!')">&lt;script src="script.js"&gt;&lt;/script&gt;</button>
+      <button onclick="alert('Try again.')">&lt;script href="script.js"&gt;&lt;/script&gt;</button>
+
+      <p>4. Which property is used to change the background color in CSS?</p>
+      <button onclick="alert('Correct!')">background-color</button>
+      <button onclick="alert('Try again.')">bg-color</button>
+    </section>
+    <section id="carousel">
+      <h2>Image Carousel</h2>
+      <img id="carousel-img" src="https://picsum.photos/id/1015/800/400" alt="carousel" style="width:100%; border-radius: 0.5rem;">
+    </section>
+    <section id="api">
+      <h2>Random Joke Generator</h2>
+      <p id="joke">Click below to fetch a joke!</p>
+      <button onclick="getJoke()">Get Joke</button>
+      <ul id="extra-jokes"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 WebGenius Hub</p>
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    const images = [
+      'https://picsum.photos/id/1015/800/400',
+      'https://picsum.photos/id/1016/800/400',
+      'https://picsum.photos/id/1018/800/400'
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      document.getElementById('carousel-img').src = images[index];
+    }, 3000);
+
+    async function getJoke() {
+      const res = await fetch('https://icanhazdadjoke.com/', {
+        headers: { Accept: 'application/json' }
+      });
+      const data = await res.json();
+      document.getElementById('joke').textContent = data.joke;
+      let jokesList = document.getElementById('extra-jokes');
+      jokesList.innerHTML = '';
+      for (let i = 0; i < 3; i++) {
+        const response = await fetch('https://icanhazdadjoke.com/', {
+          headers: { Accept: 'application/json' }
+        });
+        const jokeData = await response.json();
+        let li = document.createElement('li');
+        li.textContent = jokeData.joke;
+        jokesList.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>
